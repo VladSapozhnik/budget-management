@@ -39,9 +39,9 @@ export const transactionSlice = createSlice({
       state.transactionDate.forEach(item => {
         if (item.id === action.payload.id) {
 
-          if (action.payload.operation === 'add') {
+          if (action.payload.operation === 'add' && action.payload.name === 'sum') {
             state.budget = (state.budget - Number(item.sum) + Number(action.payload.val));
-          } else {
+          } else if (action.payload.operation === 'remove' && action.payload.name === 'sum') {
             state.budget = (state.budget + Number(item.sum) - Number(action.payload.val));
           }
         

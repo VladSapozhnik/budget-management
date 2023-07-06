@@ -18,7 +18,7 @@ const Transaction = ({name, sum, id, operation, date}) => {
     return formatter.format(date);
   }
 
-  const defectTransaction2 = (e, id) => {
+  const defect = (e, id) => {
     const target = e.target;
     dispatch(defectTransaction({
       name: target.name,
@@ -31,8 +31,8 @@ const Transaction = ({name, sum, id, operation, date}) => {
 
   return (
     <div className="border border-success rounded-2 p-3 w-50 mb-2">
-      <div>Назва транзакції: <input type="text" name="name" onBlur={e => defectTransaction2(e, id)} className="border-0" defaultValue={name} /></div>
-      <div>Сума транзакції: <input type="number" name="sum" onBlur={e => defectTransaction2(e, id)} className="border-0 w-10" defaultValue={sum} /> грн</div>
+      <div>Назва транзакції: <input type="text" name="name" onBlur={e => defect(e, id)} className="border-0" defaultValue={name} /></div>
+      <div>Сума транзакції: <input type="number" name="sum" onBlur={e => defect(e, id)} className="border-0 w-10" defaultValue={sum} /> грн</div>
       <div>Тип транзакції: {operation === 'add' ? 'Дохід' : 'Витрата'}</div>
       <div>Час: {dateFormatter(date)}</div>
       <button onClick={() => dispatch(removeTransaction({id}))} className="btn btn-danger">Remove</button>
