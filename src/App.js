@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Transaction from './components/Transaction';
+import Budget from './components/Budget';
+import Form from './components/FormTest';
+
+import { useSelector } from 'react-redux';
 
 function App() {
+  const transactionDate = useSelector(state => state.transaction.transactionDate);
+
+
+
+  // const transactionSort = data => {
+  //   return data.sort((a, b) => {
+  //     return a.date - b.date;
+  //   });
+  // }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container pt-4'>
+        <Budget />
+        <Form />
+        <div className='d-flex flex-column align-items-center'>
+          {transactionDate.map(item => <Transaction key={item.id} id={item.id} name={item.name} sum={item.sum} operation={item.operation} date={item.date} />)}
+        </div>
+      </div>
     </div>
   );
 }
