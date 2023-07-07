@@ -1,7 +1,7 @@
 import './App.css';
 import Transaction from './components/Transaction';
 import Budget from './components/Budget';
-import Form from './components/FormTest';
+import Form from './components/FormTransaction';
 
 import { useSelector } from 'react-redux';
 
